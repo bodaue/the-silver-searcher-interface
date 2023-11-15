@@ -5,17 +5,17 @@
 <p>
 This project is a Python graphical interface using the <a href="https://github.com/TomSchimansky/CustomTkinter">
 CustomTKinter</a> and <a href="https://docs.python.org/3/library/tk">Tkinter</a> libraries for convenient interaction 
-with "The Silver Searcher" (Ag) tool.</p>
+with <a href="https://github.com/ggreer/the_silver_searcher">"The Silver Searcher" (Ag)</a> tool.</p>
 <p>This interface allows users to perform searches for text patterns in files and configure various parameters for more 
 precise and user-friendly searches.</p>
 
 ## Dark Theme
 
-<img src="static/interface_dark_theme.png">
+<img src="static/interface_dark_theme.png" width="75%">
 
 ## Light Theme
 
-<img src="static/interface_light_theme.png">
+<img src="static/interface_light_theme.png" width="75%">
 
 # Requirements
 
