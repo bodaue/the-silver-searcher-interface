@@ -1,5 +1,4 @@
 import subprocess
-from pathlib import Path
 from tkinter import filedialog
 from tkinter.constants import NORMAL, DISABLED, END
 
@@ -13,8 +12,6 @@ customtkinter.set_default_color_theme("blue")  # Themes: "blue" (standard), "gre
 class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
-
-        self.folder_path = Path()
 
         # configure window
         self.title("The Silver Searcher")
@@ -38,7 +35,7 @@ class App(customtkinter.CTk):
                                                     placeholder_text="Паттерн")
         self.entry_pattern.grid(row=1, column=0, columnspan=2, padx=(20, 20), pady=(20, 20), sticky="nsew")
 
-        # create checkboxes
+        # create checkboxes (flags)
         self.checkbox_i = customtkinter.CTkCheckBox(master=self.sidebar_frame,
                                                     text='Игнорировать регистр')
         self.checkbox_i.grid(row=2, column=0, pady=(20, 0), padx=20, sticky="NSEW")
@@ -49,6 +46,7 @@ class App(customtkinter.CTk):
         self.checkbox_c = customtkinter.CTkCheckBox(master=self.sidebar_frame,
                                                     text='Поиск количества вхождений')
         self.checkbox_c.grid(row=4, column=0, pady=(20, 0), padx=20, sticky="n")
+
         # create sidebar button
         self.main_button = customtkinter.CTkButton(self.sidebar_frame,
                                                    command=self.apply_button_event,
@@ -64,7 +62,7 @@ class App(customtkinter.CTk):
                                                                 command=self.change_appearance_mode_event)
         self.appearance_mode_menu.grid(row=6, column=0, padx=20, pady=(10, 10))
 
-        # create main entry and button
+        # choosing folder path
         self.entry_folder_path = customtkinter.CTkEntry(self, placeholder_text="Путь к каталогу")
         self.entry_folder_path.grid(row=3, column=1, columnspan=2, padx=(20, 0), pady=(20, 20), sticky="nsew")
 
@@ -74,6 +72,7 @@ class App(customtkinter.CTk):
                                                      text='...', width=50)
         self.folder_button.grid(row=3, column=3, padx=(10, 20), pady=(20, 20), sticky="nsew")
 
+        # self.a= customtkinter.CTkTabview(self)
         # create textbox
         self.textbox = customtkinter.CTkTextbox(self, width=250, height=400)
         self.textbox.grid(row=0, column=1, padx=(20, 0), pady=(20, 0), sticky="nsew")
@@ -88,7 +87,6 @@ class App(customtkinter.CTk):
 
     def filedialog_event(self):
         filename = filedialog.askdirectory()
-        self.folder_path = filename
         self.entry_folder_path.insert(index=0, string=filename)
 
     def apply_button_event(self):
