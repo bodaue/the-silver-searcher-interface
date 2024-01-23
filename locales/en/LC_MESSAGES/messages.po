@@ -1,14 +1,14 @@
 # English translations for PROJECT.
-# Copyright (C) 2023 ORGANIZATION
+# Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-11-29 21:17+0300\n"
-"PO-Revision-Date: 2023-11-29 21:18+0300\n"
+"POT-Creation-Date: 2024-01-23 16:03+0300\n"
+"PO-Revision-Date: 2024-01-23 16:04+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -18,36 +18,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: src/app.py:100
+#: src/app.py:102
 msgid "Паттерн"
 msgstr "Pattern"
 
-#: src/app.py:101
+#: src/app.py:103
 msgid "Игнорировать регистр"
 msgstr "Ignore case"
 
-#: src/app.py:102
+#: src/app.py:104
 msgid "Поиск слов целиком"
 msgstr "Full word search"
 
-#: src/app.py:103
+#: src/app.py:105
 msgid "Поиск количества вхождений"
 msgstr "Search the number of occurrences"
 
-#: src/app.py:104
+#: src/app.py:106
 msgid "Применить"
 msgstr "Apply"
 
-#: src/app.py:105
+#: src/app.py:107
 msgid "Язык"
 msgstr "Language"
 
-#: src/app.py:106
+#: src/app.py:108
 msgid "Цветовая тема"
 msgstr "Color theme"
 
-#: src/app.py:107
+#: src/app.py:109
 msgid "Путь к каталогу"
 msgstr "Directory path"
 
+#: src/app.py:131
+msgid "Введите паттерн!"
+msgstr "Enter a pattern!"
+
+#: src/app.py:136
+msgid "Выберите каталог"
+msgstr "Select a folder"
+
+#: src/app.py:145
+msgid "Превышено время ожидания {} секунд."
+msgstr "The waiting time of {} seconds has been exceeded."
 

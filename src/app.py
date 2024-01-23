@@ -18,8 +18,9 @@ class App(customtkinter.CTk):
     def __init__(self, default_lang=DEFAULT_LANGUAGE):
         super().__init__()
 
-        self.localedir = Path(__file__).parent.parent
-        self.localedir = os.path.join(self.localedir, 'locales')
+        self.localedir = Path(__file__).parent
+        self.localedir = os.path.join(self.localedir, '../locales')
+        self.language = default_lang
 
         # configure window
         self.title(TITLE)
@@ -93,9 +94,9 @@ class App(customtkinter.CTk):
         self.set_language(default_lang)
 
     def set_language(self, lang: str):
-        lang = 'ru' if lang in ('Русский', 'ru') else 'en'
+        self.language = 'ru' if lang in ('Русский', 'ru') else 'en'
 
-        _ = gettext.translation('app', localedir=self.localedir, languages=[lang]).gettext
+        _ = gettext.translation('messages', localedir=self.localedir, languages=[self.language]).gettext
 
         # set texts
         self.entry_pattern.configure(placeholder_text=_("Паттерн"))
@@ -123,20 +124,28 @@ class App(customtkinter.CTk):
 
         flags = f'{flag_i} {flag_w} {flag_c}'.strip()
 
+        _ = gettext.translation('messages', localedir=self.localedir, languages=[self.language]).gettext
+
         pattern = self.entry_pattern.get()
         if not pattern:
-            self._text_message('Введите паттерн!')
+            self._text_message(_('Введите паттерн!'))
             return
 
         folder = self.entry_folder_path.get()
         if not folder:
-            self._text_message('Выберите каталог')
+            self._text_message(_('Выберите каталог'))
             return
 
         self.main_button.configure(state=DISABLED)
 
         command_string = f'ag.exe -H --ackmate {flags} {pattern} {folder}'
-        result = subprocess.run(command_string, capture_output=True)
+        try:
+            result = subprocess.run(command_string, capture_output=True, timeout=TIMEOUT)
+        except subprocess.TimeoutExpired:
+            self._text_message(_('Превышено время ожидания {} секунд.').format(TIMEOUT))
+            self.main_button.configure(state=NORMAL)
+            return
+
         self.main_button.configure(state=NORMAL)
         if result.stderr:
             self._text_message(result.stderr)
@@ -154,8 +163,3 @@ class App(customtkinter.CTk):
         self.textbox.delete(1.0, END)
         self.textbox.insert('0.0', text)
         self.textbox.configure(state=DISABLED)
-
-
-if __name__ == "__main__":
-    app = App(default_lang=DEFAULT_LANGUAGE)
-    app.mainloop()
