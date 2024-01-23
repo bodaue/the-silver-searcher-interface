@@ -118,7 +118,7 @@ class App(customtkinter.CTk):
         self.entry_folder_path.insert(index=0, string=filename)
 
     def apply_button_event(self):
-        flag_i = '-i' if self.checkbox_i.get() else ''
+        flag_i = '-i' if self.checkbox_i.get() else '-s'
         flag_w = '-w' if self.checkbox_w.get() else ''
         flag_c = '-c' if self.checkbox_c.get() else ''
 
@@ -139,6 +139,7 @@ class App(customtkinter.CTk):
         self.main_button.configure(state=DISABLED)
 
         command_string = f'ag.exe -H --ackmate {flags} {pattern} {folder}'
+        print(command_string)
         try:
             result = subprocess.run(command_string, capture_output=True, timeout=TIMEOUT)
         except subprocess.TimeoutExpired:
