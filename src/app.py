@@ -139,7 +139,6 @@ class App(customtkinter.CTk):
         self.main_button.configure(state=DISABLED)
 
         command_string = f'ag.exe -H --ackmate {flags} {pattern} {folder}'
-        print(command_string)
         try:
             result = subprocess.run(command_string, capture_output=True, timeout=TIMEOUT)
         except subprocess.TimeoutExpired:
