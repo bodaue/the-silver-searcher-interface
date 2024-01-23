@@ -66,7 +66,7 @@ class App(customtkinter.CTk):
                                                          command=self.set_language)
         self.language_menu.grid(row=5, column=0, padx=20, pady=(10, 50))
 
-        # create appearance menu to change a theme
+        # create appearance menu to change .env.dist theme
         self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_frame, anchor="w")
         self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(20, 0))
         self.appearance_mode_menu = customtkinter.CTkOptionMenu(self.sidebar_frame,
@@ -150,7 +150,7 @@ class App(customtkinter.CTk):
         if result.stderr:
             self._text_message(result.stderr)
         else:
-            result = result.stdout.decode(ENCODING)
+            result = result.stdout.decode('cp866')
             result = AgParser(result_string=result).format_text(flag_c=bool(self.checkbox_c.get()))
             result = result[:20000]
             self._text_message(result)

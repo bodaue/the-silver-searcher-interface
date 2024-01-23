@@ -34,6 +34,10 @@ git clone https://github.com/bodaue/the-silver-searcher-interface.git
 ```commandline
 pip install -r requirements.txt
 ```
+- Rename .env.dist to .env
+```
+ren .env.dist .env
+```
 
 ## Launch
 ```
