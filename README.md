@@ -34,3 +34,8 @@ git clone https://github.com/bodaue/the-silver-searcher-interface.git
 ```commandline
 pip install -r requirements.txt
 ```
+
+## Launch
+```
+python main.py
+```
